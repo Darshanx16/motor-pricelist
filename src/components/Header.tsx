@@ -11,6 +11,14 @@ interface HeaderProps {
   showExport?: boolean;
 }
 
+const showAlert = (title: string, message: string) => {
+  if (Platform.OS === 'web') {
+    alert(`${title}\n\n${message}`);
+  } else {
+    Alert.alert(title, message);
+  }
+};
+
 export const Header: React.FC<HeaderProps> = ({ onExportPDF, showExport }) => {
   const { isDark, colors, toggleTheme } = useTheme();
   const { updateData, clearAllData } = useMotorData();
@@ -42,18 +50,20 @@ export const Header: React.FC<HeaderProps> = ({ onExportPDF, showExport }) => {
         if (parsedData.length > 0) {
           const success = await updateData(brand, parsedData);
           if (success) {
-            alert(`Success! Imported ${parsedData.length} ${brand} motors.`);
+            showAlert('Success', `Imported ${parsedData.length} ${brand} motors.`);
           }
         } else {
-          alert(`Warning: No valid data found in that ${brand} Excel file. Check format.`);
+          showAlert('Warning', `No valid data found in that ${brand} Excel file. Check format.`);
         }
         setModalVisible(false);
       }
     } catch (err) {
       console.log('Error importing excel:', err);
-      alert('Error parsing Excel file. See console for details.');
+      const errMsg = err instanceof Error ? err.message : String(err);
+      showAlert('Error', `Error parsing Excel file: ${errMsg}`);
     }
   };
+
 
   return (
     <View style={[styles.header, { backgroundColor: colors.bgElevated, borderBottomColor: colors.border }]}>
@@ -129,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({ onExportPDF, showExport }) => {
               onPress={async () => {
                 const performClear = async () => {
                   await clearAllData();
-                  alert('All stored price data has been successfully removed.');
+                  showAlert('Success', 'All stored price data has been successfully removed.');
                   setModalVisible(false);
                 };
 
