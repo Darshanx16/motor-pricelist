@@ -1,0 +1,1 @@
+const XLSX = require(" xlsx\); const wb = XLSX.readFile(\C:/Users/Saravanan/Downloads/Siemens Price list 2026 PRICING AFTER EDITING.xlsx\); const sheet = wb.Sheets[wb.SheetNames[0]]; const rows = XLSX.utils.sheet_to_json(sheet, {header: 1}); console.log(rows[4]);

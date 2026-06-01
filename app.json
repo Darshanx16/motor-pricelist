@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Motor PriceList",
+    "slug": "motor-pricelist",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Gemini_Generated_Image_g4bcq5g4bcq5g4bc.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/Gemini_Generated_Image_g4bcq5g4bcq5g4bc.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "./assets/Gemini_Generated_Image_g4bcq5g4bcq5g4bc.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/Gemini_Generated_Image_g4bcq5g4bcq5g4bc.png"
+    }
+  }
+}
